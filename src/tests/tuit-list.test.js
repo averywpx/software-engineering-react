@@ -1,4 +1,4 @@
-import {Tuits} from "../components/tuits/index";
+import {Tuits} from "../components/tuits/tuits";
 import {screen, render} from "@testing-library/react";
 import {HashRouter} from "react-router-dom";
 import {findAllTuits} from "../services/tuits-service";
@@ -6,10 +6,6 @@ import axios from "axios";
 import 'regenerator-runtime/runtime'
 
 jest.mock('axios');
-
-const MOCKED_USERS = [
-  "alice", "bob", "charlie"
-];
 
 const MOCKED_TUITS = [
   {tuit: "alice's tuit"},
