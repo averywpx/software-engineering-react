@@ -3,6 +3,7 @@ import {
   deleteUsersByUsername, findAllUsers,
   findUserById
 } from "../services/users-service";
+import 'regenerator-runtime/runtime'
 
 describe('createUser', () => {
   // sample user to insert
@@ -15,13 +16,13 @@ describe('createUser', () => {
   // setup test before running test
   beforeAll(() => {
     // remove any/all users to make sure we create it in the test
-    return deleteUsersByUsername(ripley.username);
+    deleteUsersByUsername(ripley.username);
   })
 
   // clean up after test runs
   afterAll(() => {
     // remove any data we created
-    return deleteUsersByUsername(ripley.username);
+    deleteUsersByUsername(ripley.username);
   })
 
   test('can insert new users with REST API', async () => {
