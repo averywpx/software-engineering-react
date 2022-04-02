@@ -18,16 +18,16 @@ const Profile = () => {
   //     navigate('/login');
   //   }
   // }, []);
-  useEffect(() => {
-    const Myfunc = async () => {
-      try {
-        const user = await service.profile();
-        setProfile(user);
-      } catch (e) {
-        navigate('/login');
-      }
+  const Myfunc = async () => {
+    try {
+      const user = await service.profile();
+      setProfile(user);
+    } catch (e) {
+      navigate('/login');
+    }
   }
-  
+  useEffect(() => {
+    Myfunc();
   }, []);
   // const myFunction = async () => {
   //   try {

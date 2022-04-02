@@ -4,9 +4,9 @@ import {useEffect, useState} from "react";
 
 const MyLikes = () => {
     const [likedTuits, setLikedTuis] = useState([]);
-    const findTuitsILike = () =>
+    const findTuitsILike = () => {
         service.findAllTuitsLikedByUser("me")
-            .then((tuits) => setLikedTuis(tuits));
+            .then((tuits) => setLikedTuis(tuits))};
     useEffect(findTuitsILike, []);
     
     return(
