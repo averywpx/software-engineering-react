@@ -1,7 +1,8 @@
+import React from 'react';
 import {act, create} from 'react-test-renderer';
 import TuitStats from "./tuit-stats";
 
-test('stats render correctly', () => {
+test('stats render correctly for like', () => {
   let stats = {
     likes: 123,
     replies: 234,
@@ -45,4 +46,47 @@ test('stats render correctly', () => {
   act(() => {likeTuitButton.props.onClick()})
   likesText = likesCounter.children[0];
   expect(likesText).toBe('124');
+});
+
+test('stats render correctly for dislike', () => {
+  let stats = {
+    likes: 123,
+    dislikes: 456,
+    replies: 234,
+    retuits: 345
+  }
+  
+  const dislikeTuit = () => {
+    act(() => {
+      stats.dislikes++;
+      tuitStats.update(
+        <TuitStats
+          tuit={{stats: stats}}
+          dislikeTuit={() => {}}
+        />)
+    })
+  }
+  
+  let tuitStats
+  act(() => {
+    tuitStats = create(
+      <TuitStats
+        dislikeTuit={dislikeTuit}
+        tuit={{stats: stats}}/>
+    );
+  })
+  
+  const root = tuitStats.root;
+  const dislikesCounter = root.findByProps({className: 'ttr-stats-dislikes'})
+  const dislikeTuitButton = root.findByProps(
+    {className: 'ttr-dislike-tuit-click'})
+
+  let dislikesText = dislikesCounter.children[0];
+  
+  expect(dislikesText).toBe('456');
+  
+  
+  act(() => {dislikeTuitButton.props.onClick()})
+  dislikesText = dislikesCounter.children[0];
+  expect(dislikesText).toBe('457');
 });

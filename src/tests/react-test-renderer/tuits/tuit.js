@@ -1,3 +1,5 @@
+import React from 'react';
+
 const Tuit = ({tuit}) => {
   return(
     <li className="ttr-tuit">

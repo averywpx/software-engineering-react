@@ -1,5 +1,6 @@
 import renderer, {act, create} from 'react-test-renderer';
 import Counter from "./counter";
+import React from 'react';
 
 test('counter', () => {
 

@@ -1,17 +1,17 @@
 import React from 'react';
 import {act, create} from "react-test-renderer"
 import tuitsJson from "./tuits.json"
-import Tuits from "./tuits";
+import MyDislikes from "./my-dislikes";
 
-test('tuits render', () => {
-  let tuitsRender
+test('disliked tuits render', () => {
+  let dislikesRender
   act(() => {
-    tuitsRender = create(
-      <Tuits
-        tuits={tuitsJson}/>
+    dislikesRender = create(
+      <MyDislikes
+        dislikeTuit={tuitsJson}/>
     )
   })
-  const root = tuitsRender.root
+  const root = dislikesRender.root
   const ttrTuits = root.findAllByProps({
     className: 'ttr-tuit'})
   expect(ttrTuits.length).toBe(tuitsJson.length)

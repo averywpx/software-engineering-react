@@ -1,4 +1,6 @@
 import {useState} from "react";
+import React from 'react';
+
 const Counter = ({initialCount = 12}) => {
   const [count, setCount] = useState(initialCount);
   const up = () => {

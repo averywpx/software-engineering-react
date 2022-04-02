@@ -1,3 +1,4 @@
+import React from 'react';
 import Tuit from "./tuit";
 
 const Tuits = ({tuits = []}) => {
