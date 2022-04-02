@@ -10,14 +10,38 @@ const Profile = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [profile, setProfile] = useState({});
-  useEffect(async () => {
+  // useEffect(async () => {
+  //   try {
+  //     const user = await service.profile();
+  //     setProfile(user);
+  //   } catch (e) {
+  //     navigate('/login');
+  //   }
+  // }, []);
+  const Myfunc = async () => {
     try {
       const user = await service.profile();
       setProfile(user);
     } catch (e) {
       navigate('/login');
     }
+  }
+  useEffect(() => {
+    Myfunc();
   }, []);
+  // const myFunction = async () => {
+  //   try {
+  //     const user = await service.profile();
+  //       setProfile(user);
+  //     } catch (e) {
+  //       navigate('/login');
+  //     }
+  //   };
+
+  // useEffect(() => {
+  //     myFunction();
+  // },[]);
+
   const logout = () => {
     service.logout()
         .then(() => navigate('/login'));
